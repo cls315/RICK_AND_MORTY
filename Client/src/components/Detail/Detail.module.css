@@ -1,0 +1,21 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+}
+
+.descripcion{
+    color: white;
+}
+
+.img{
+    padding: 10px;
+    border-radius: 100%;
+}
+
+@media screen and (max-width: 980px){
+    .container{
+        width: 90%;
+    }
+}

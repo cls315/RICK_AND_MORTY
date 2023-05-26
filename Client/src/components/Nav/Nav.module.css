@@ -1,0 +1,17 @@
+.nav{
+    background-color: #0F6292;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn{
+    border: none;
+    margin: 10px;
+    width: 70px;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.btn:hover{
+    cursor: pointer;
+}
