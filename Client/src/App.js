@@ -8,6 +8,7 @@ import About from "./components/About/About";
 import Detail from "./components/Detail/Detail";
 import Form from "./components/Form/Form";
 import Favorites from "./components/Favorites/Favorites";
+import axios from "axios";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -19,16 +20,16 @@ function App() {
     !access && navigate("/");
   }, [access]);
 
-  const onSearch = (char) => {
-    fetch(`https://rickandmortyapi.com/api/character/${char}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.name) {
+  const onSearch = (id) => {
+    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
+      ({ data }) => {
+        if (data?.name) {
           setCharacters((oldChars) => [...oldChars, data]);
         } else {
-          window.alert("¡No hay personajes con este ID!");
+          window.alert("No hay personajes con este ID!");
         }
-      });
+      }
+    );
   };
 
   const hndleOnClose = (id) => {

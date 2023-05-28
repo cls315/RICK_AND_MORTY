@@ -45,14 +45,13 @@ function Card({ id, name, species, gender, image, onClose }) {
         <button onClick={handleFavorite}>🤍</button>
       )}
       <img src={image} alt="" className={img} />
-      <Link to={`/details/detailId/:${id}`}>
+      <Link to={`/detail/${id}`}>
         <h2 className={h2}>{name}</h2>
       </Link>
       <div className={h3}>
         <h3>{species}</h3>
         <h3>{gender}</h3>
       </div>
-      <p className={p}>{origin}</p>
       <button onClick={onClose} className={button}>
         X
       </button>
