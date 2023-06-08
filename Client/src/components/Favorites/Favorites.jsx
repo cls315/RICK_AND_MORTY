@@ -5,7 +5,7 @@ import { filterCards, orderCards } from "../../Redux/Actions/actions";
 import { useState } from "react";
 
 export default function Favorites() {
-  const favorites = useSelector((state) => state.myFavorites);
+  const favorites = useSelector((state) => state);
   const dispatch = useDispatch();
   const [aux, setAux] = useState(false);
 
@@ -30,7 +30,7 @@ export default function Favorites() {
         <option value="Genderless">Genderless</option>
         <option value="unknown">Unknown</option>
       </select>
-      {favorites?.map((fav) => {
+      {favorites.myFavorites?.map((fav) => {
         return (
           <Card
             image={fav.image}
