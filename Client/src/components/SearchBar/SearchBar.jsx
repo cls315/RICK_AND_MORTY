@@ -2,10 +2,10 @@ import { useState } from "react";
 import style from "./SearchBar.module.css";
 
 export default function SearchBar({ onSearch }) {
-  const [character, setCharacter] = useState({});
+  const [id, setId] = useState("");
 
   const handleInputChange = (e) => {
-    setCharacter(e.target.value);
+    setId(e.target.value);
   };
 
   return (
@@ -14,9 +14,9 @@ export default function SearchBar({ onSearch }) {
         className={style.input}
         type="search"
         onChange={handleInputChange}
-        value={character}
+        value={id}
       />
-      <button onClick={() => onSearch(character)} className={style.boton}>
+      <button onClick={() => onSearch(id)} className={style.boton}>
         Agregar
       </button>
     </div>

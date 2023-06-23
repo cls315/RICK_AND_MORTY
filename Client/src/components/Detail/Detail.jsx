@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import style from "./Detail.module.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -6,11 +6,10 @@ import { useParams } from "react-router-dom";
 const { container, img, descripcion } = style;
 
 const Detail = () => {
-  const { detailId } = useParams();
-  const [character, setCharacter] = useState({});
+  const { id } = useParams();
 
   useEffect(() => {
-    axios(`http://localhost:3001/rickandmorty/character/${detailId}`).then(
+    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
       ({ data }) => {
         if (data.name) {
           setCharacter(data);
@@ -20,7 +19,9 @@ const Detail = () => {
       }
     );
     return setCharacter({});
-  }, [detailId]);
+  }, [id]);
+
+  const [character, setCharacter] = useState({});
 
   return (
     <div className={container}>

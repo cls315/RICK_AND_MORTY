@@ -12,41 +12,10 @@ import axios from "axios";
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  const location = useLocation();
-  const navigate = useNavigate();
 
   const [access, setAccess] = useState(false);
 
-  useEffect(() => {
-    !access && navigate("/");
-  }, [access]);
-
-  const onSearch = async (id) => {
-    try {
-      const { data } = await axios(
-        `http://localhost:3001/rickandmorty/character/${id}`
-      );
-      setCharacters((oldChars) => [...oldChars, data]);
-    } catch (error) {
-      window.alert(error.response.data);
-    }
-    //axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
-    //({ data }) => {
-    //if (data?.name) {
-    //setCharacters((oldChars) => [...oldChars, data]);
-    //} else {
-    //window.alert("No hay personajes con este ID!");
-    //}
-    //}
-    //);
-  };
-
-  const hndleOnClose = (id) => {
-    setCharacters((oldChars) => oldChars.filter((ch) => ch.id !== +id));
-  };
-
-  //const EMAIL = "camilasaya315@gmail.com";
-  //const PASSWORD = "cls0315";
+  const navigate = useNavigate();
 
   async function login(userData) {
     try {
@@ -57,22 +26,33 @@ function App() {
       );
       const { access } = data;
       setAccess(data);
-      access && navigate("/home");
+      access ? navigate("/home") : window.alert("User or pass invalid");
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
-    //const { email, password } = userData;
-    //const URL = "http://localhost:3001/rickandmorty/login/";
-    //axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
-    //  const { access } = data;
-    //  setAccess(data);
-    //  access && navigate("/home");
-    //});
   }
+
+  async function onSearch(id) {
+    try {
+      const { data } = await axios(
+        `http://localhost:3001/rickandmorty/character/${id}`
+      );
+      setCharacters((oldChars) => [...oldChars, data]);
+    } catch (error) {
+      window.alert(error.response.data);
+    }
+  }
+
+  function hndleOnClose(id) {
+    const newCharacters = characters.filter((char) => char.id !== id);
+    setCharacters(newCharacters);
+  }
+
+  const { pathname } = useLocation();
 
   return (
     <div>
-      {location.pathname !== "/" && <Nav onSearch={onSearch} />}
+      {pathname !== "/" && <Nav onSearch={onSearch} />}
       <div className="App">
         <Routes>
           <Route path="/" element={<Form login={login} />} />

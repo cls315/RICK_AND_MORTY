@@ -11,7 +11,7 @@ export default function Cards({ characters, hndleOnClose }) {
         species={species}
         gender={gender}
         image={image}
-        onClose={() => hndleOnClose(id)}
+        onClose={hndleOnClose}
       />
     </div>
   ));

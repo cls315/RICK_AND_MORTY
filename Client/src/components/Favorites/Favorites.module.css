@@ -1,0 +1,11 @@
+.ho, .hf{
+    padding: 3px;
+    margin: 5px;
+    font-family: monospace;
+}
+
+option{
+    cursor: pointer;
+    background-color: greenyellow;
+}
+
