@@ -1,5 +1,8 @@
 .barra{
     padding: auto;
+    margin: 7px;
+    display: flex;
+    align-items: center;
 }
 
 
@@ -24,6 +27,6 @@
 
 .boton:hover{
     cursor: pointer;
-    background-color: #FFED00;
+    background-color: #FFFAA4;
     color: black;
 }

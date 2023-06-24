@@ -1,7 +1,9 @@
 .nav{
-    background-color: #0F6292;
+    background-color: #153E90;
+    height: 50px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .btn{
@@ -14,4 +16,5 @@
 
 .btn:hover{
     cursor: pointer;
+    background-color: #FFFAA4;
 }

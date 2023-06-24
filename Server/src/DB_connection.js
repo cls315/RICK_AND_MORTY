@@ -17,5 +17,7 @@ User.belongsToMany(Favorite, { through: "user_favorite", timestamps: false });
 Favorite.belongsToMany(User, { through: "user_favorite", timestamps: false });
 
 module.exports = {
+  User,
+  Favorite,
   conn: sequelize,
 };

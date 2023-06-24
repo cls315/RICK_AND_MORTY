@@ -5,7 +5,7 @@ import { addFav, removeFav } from "../../Redux/Actions/actions";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const { contenedor, h3, h2, img, button } = style;
+const { contenedor, h3, h2, img, button, btnFav, btn } = style;
 
 function Card(props) {
   const [isFav, setIsFav] = useState(false);
@@ -34,11 +34,6 @@ function Card(props) {
       <div>
         <img src={props.image} alt="" className={img} />
       </div>
-      {isFav ? (
-        <button onClick={handleFavorite}>❤️</button>
-      ) : (
-        <button onClick={handleFavorite}>🤍</button>
-      )}
       <Link to={`/detail/${props.id}`}>
         <h2 className={h2}>{props.name}</h2>
       </Link>
@@ -46,9 +41,20 @@ function Card(props) {
         <h3>{props.species}</h3>
         <h3>{props.gender}</h3>
       </div>
-      <button onClick={() => props.onClose(props.id)} className={button}>
-        X
-      </button>
+      <div className={btn}>
+        {isFav ? (
+          <button onClick={handleFavorite} className={btnFav}>
+            ❤️
+          </button>
+        ) : (
+          <button onClick={handleFavorite} className={btnFav}>
+            🤍
+          </button>
+        )}
+        <button onClick={() => props.onClose(props.id)} className={button}>
+          X
+        </button>
+      </div>
     </div>
   );
 }
